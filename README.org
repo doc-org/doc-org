@@ -1,4 +1,8 @@
-* doc-org
+#+TITLE: doc-org
+
+[[http://spacemacs.org][file:https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg]]
+
+* Presentation
 Cli command that generates a pdf starting from three files:
 - main.org :: the first org file that will be compiled. In this file you can
   include other org or latex files.
@@ -8,7 +12,7 @@ Cli command that generates a pdf starting from three files:
   pdf).
 
 Doc-org uses docker, which means you don't need to have latex or emacs installed
-in your machine.
+on your machine.
 
 Dor-org is for people who already have a latex template and want to use org-mode
 to write the content of their document.
