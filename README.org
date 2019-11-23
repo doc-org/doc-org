@@ -16,8 +16,8 @@ Anyway, org mode supports latex, so you can use latex code when needed.
 
 * org mode to latex: useful links
 
-tables: https://orgmode.org/manual/Tables-in-LaTeX-export.html#Tables-in-LaTeX-export
-images: https://orgmode.org/manual/Images-in-LaTeX-export.html#Images-in-LaTeX-export
-lists: https://orgmode.org/manual/Plain-lists-in-LaTeX-export.html#Plain-lists-in-LaTeX-export
-code: https://orgmode.org/manual/Source-blocks-in-LaTeX-export.html#Source-blocks-in-LaTeX-export
-horizontal: https://orgmode.org/manual/Horizontal-rules-in-LaTeX-export.html#Horizontal-rules-in-LaTeX-export
+- [[https://orgmode.org/manual/Tables-in-LaTeX-export.html#Tables-in-LaTeX-export][tables]]
+- [[https://orgmode.org/manual/Images-in-LaTeX-export.html#Images-in-LaTeX-export][images]]
+- [[https://orgmode.org/manual/Plain-lists-in-LaTeX-export.html#Plain-lists-in-LaTeX-export][lists]]
+- [[https://orgmode.org/manual/Source-blocks-in-LaTeX-export.html#Source-blocks-in-LaTeX-export][code]]
+- [[https://orgmode.org/manual/Horizontal-rules-in-LaTeX-export.html#Horizontal-rules-in-LaTeX-export][horizontal]]
