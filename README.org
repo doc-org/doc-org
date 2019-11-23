@@ -5,9 +5,9 @@
 * Presentation
 Cli command that generates a pdf starting from three files:
 - main.org :: the first org file that will be compiled. In this file you can
-  include other org or latex files.
+  include other org or latex files. It contains the contents of the document.
 - header.tex :: the latex header, that contains document class, packages and so
-  on.
+  on. It tells how your document should look like.
 - config.json :: contains some parameters (at the moment just the title of the
   pdf).
 
