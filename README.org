@@ -1,0 +1,23 @@
+* doc-org
+Cli command that generates a pdf starting from three files:
+- main.org :: the first org file that will be compiled. In this file you can
+  include other org or latex files.
+- header.tex :: the latex header, that contains document class, packages and so
+  on.
+- config.json :: contains some parameters (at the moment just the title of the
+  pdf).
+
+Doc-org uses docker, which means you don't need to have latex or emacs installed
+in your machine.
+
+Dor-org is for people who already have a latex template and want to use org-mode
+to write the content of their document.
+Anyway, org mode supports latex, so you can use latex code when needed.
+
+* org mode to latex: useful links
+
+tables: https://orgmode.org/manual/Tables-in-LaTeX-export.html#Tables-in-LaTeX-export
+images: https://orgmode.org/manual/Images-in-LaTeX-export.html#Images-in-LaTeX-export
+lists: https://orgmode.org/manual/Plain-lists-in-LaTeX-export.html#Plain-lists-in-LaTeX-export
+code: https://orgmode.org/manual/Source-blocks-in-LaTeX-export.html#Source-blocks-in-LaTeX-export
+horizontal: https://orgmode.org/manual/Horizontal-rules-in-LaTeX-export.html#Horizontal-rules-in-LaTeX-export
