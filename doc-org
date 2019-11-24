@@ -1,7 +1,9 @@
 #!/bin/sh
 
+DOCKER_IMAGE=marcoieni/doc-org
+
 # download or update image
-docker pull marcoieni/doc-org
+docker pull $DOCKER_IMAGE
 
 DEST="/root/project"
 
@@ -14,4 +16,4 @@ fi
 
 MOUNT_ARG="type=volume,source=$SOURCE,dst=$DEST,type=bind"
 
-docker run --mount $MOUNT_ARG marcoieni/doc-org
+docker run --mount $MOUNT_ARG $DOCKER_IMAGE
