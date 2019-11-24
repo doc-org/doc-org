@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# download or update image
+docker pull marcoieni/doc-org
+
+DEST="/root/project"
+
+if [ -z "$1" ]
+then
+    SOURCE=$(pwd)
+else
+    SOURCE=$1
+fi
+
+MOUNT_ARG="type=volume,source=$SOURCE,dst=$DEST,type=bind"
+
+docker run --mount $MOUNT_ARG marcoieni/doc-org
