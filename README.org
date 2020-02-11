@@ -1,6 +1,7 @@
 #+TITLE: doc-org
 
 [[http://spacemacs.org][file:https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg]]
+[[https://hub.docker.com/r/marcoieni/doc-org/builds][file:https://img.shields.io/docker/cloud/build/marcoieni/doc-org.svg]]
 
 * Presentation
 Cli command that generates a pdf starting from three files:
