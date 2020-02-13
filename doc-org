@@ -14,6 +14,6 @@ else
     SOURCE=$1
 fi
 
-MOUNT_ARG="type=volume,source=$SOURCE,dst=$DEST,type=bind"
+MOUNT_ARG="type=volume,source="$SOURCE",dst="$DEST",type=bind"
 
 docker run --mount $MOUNT_ARG $DOCKER_IMAGE
