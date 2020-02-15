@@ -8,7 +8,7 @@ Cli command that generates a pdf starting from three files:
 - main.org :: the first org file that will be compiled. In this file you can
   include other org or latex files. It contains the contents of the document.
 - header.tex :: the latex header, that contains document class, packages and so
-  on. It tells how your document should look like.
+  on. It tells how your document should look like (required if ="auto_latex": false=.
 - config.json :: contains configuration parameters (optional).
 
 Doc-org uses docker, which means you don't need to have latex or emacs installed
@@ -31,13 +31,14 @@ This is an example of this file, where all parameters are present:
 #+begin_src
 {
     "pdf_filename": "my document",
-    "auto_latex": true
+    "auto_latex": false
 }
 #+end_src
 
-- pdf_filename: name of the output pdf
-- auto_latex: org-mode will create the header automatically. =header.tex= file
-  is not used, doc-org does not modify the output of emacs.
+- pdf_filename :: name of the output pdf.
+- auto_latex :: org-mode will create necessary latex code automatically.
+  =header.tex= file is not used, doc-org does not modify the output of emacs.
+  It is false by default.
 
 * org mode to latex: useful links
 - [[https://orgmode.org/manual/Tables-in-LaTeX-export.html#Tables-in-LaTeX-export][tables]]
