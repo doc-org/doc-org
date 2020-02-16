@@ -31,14 +31,17 @@ This is an example of this file, where all parameters are present:
 #+begin_src
 {
     "pdf_filename": "my document",
-    "auto_latex": false
+    "auto_latex": false,
+    "shell_escape": false
 }
 #+end_src
 
 - pdf_filename :: name of the output pdf.
 - auto_latex :: org-mode will create necessary latex code automatically.
   =header.tex= file is not used, doc-org does not modify the output of emacs.
-  It is false by default.
+  False by default.
+- shell_escape :: enable latex to run external commands. Useful when working with
+  graphviz for example. False by default since it is dangerous.
 
 * org mode to latex: useful links
 - [[https://orgmode.org/manual/Tables-in-LaTeX-export.html#Tables-in-LaTeX-export][tables]]
