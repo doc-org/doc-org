@@ -4,12 +4,13 @@
 [[https://hub.docker.com/r/marcoieni/doc-org/builds][file:https://img.shields.io/docker/cloud/build/marcoieni/doc-org.svg]]
 
 * Presentation
-Cli command that generates a pdf starting from three files:
+Cli command that generates a pdf starting from these files:
 - main.org :: the first org file that will be compiled. In this file you can
   include other org or latex files. It contains the contents of the document.
 - header.tex :: the latex header, that contains document class, packages and so
   on. It tells how your document should look like (required if ="auto_latex": false=.
 - config.json :: contains configuration parameters (optional).
+- init.el :: custom emacs configuration (optional).
 
 Doc-org uses docker, which means you don't need to have latex or emacs installed
 on your machine.
