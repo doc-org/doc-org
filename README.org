@@ -5,22 +5,23 @@
 
 * Presentation
 Cli command that generates a pdf starting from these files:
-- main.org :: the first org file that will be compiled. In this file you can
+- main.org :: The first org file that will be compiled. In this file you can
   include other org or latex files. It contains the contents of the document.
-- header.tex :: the latex header, that contains document class, packages and so
+- header.tex :: The latex header, that contains document class, packages and so
   on. It tells how your document should look like (required if ="auto_latex": false=.
-- config.json :: contains configuration parameters (optional).
-- init.el :: custom emacs configuration (optional).
+- config.json :: Contains configuration parameters (optional).
+- init.el :: Custom emacs configuration. emacs source this file before converting
+  org to latex (optional).
 
-Doc-org uses docker, which means you don't need to have latex or emacs installed
-on your machine.
+Doc-org runs on docker, which means you don't need to have latex or emacs
+installed on your machine.
 
 Doc-org is for people who already have a latex template and want to use org-mode
 to write the content of their document.
 With doc-org you have full control of the latex output.
-If you are already happy with the default latex export function of org mode
-(i.e. you don't want to specify an header.tex), this is not the project you are
-looking for.
+Anyway, if you are already happy with the default latex export function of org
+mode (i.e. you don't want header.tex to be included automatically), you can
+set ="auto_latex": true= in your =config.json= file.
 
 * Features
 Org mode supports latex, so you can use latex inside an org file when needed.
