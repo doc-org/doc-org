@@ -1,19 +1,52 @@
 #!/bin/bash
 
-DOCKER_IMAGE=marcoieni/doc-org
+set -eu
+
+version=0.1.0
+program_name=$(basename "$0")
+
+Help()
+{
+    # Display Help
+    echo ""$program_name" "$version""
+    echo "Generate pdf by combining org-mode and latex."
+    echo
+    echo "USAGE:"
+    echo "    "$program_name" [document-dir]"
+    echo
+    echo "FLAGS:"
+    echo "    -h       Prints help information"
+    echo "    -v       Prints version"
+    echo
+    echo "ARGS:"
+    echo "    [document-dir] "
+}
+
+while getopts ":hv" option; do
+    case $option in
+        h) # display Help
+            Help
+            exit;;
+        v) # version
+            echo ""$program_name" "$version""
+            exit;;
+    esac
+done
+
+docker_image=marcoieni/doc-org
 
 # download or update image
-docker pull $DOCKER_IMAGE
+docker pull $docker_image
 
-DEST="/root/project"
+dest="/root/project"
 
-if [ -z "$1" ]
+document_dir=$1
+if [ ! -z "$document_dir" ] # if document-dir provided
 then
-    SOURCE=$(pwd)
-else
-    SOURCE=$1
+    cd $document_dir
 fi
 
-MOUNT_ARG="type=volume,source="$SOURCE",dst="$DEST",type=bind"
+source=$PWD
+mount_arg="type=volume,source="$source",dst="$dest",type=bind"
 
-docker run --mount $MOUNT_ARG $DOCKER_IMAGE
+docker run --mount $mount_arg $docker_image
