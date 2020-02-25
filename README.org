@@ -4,30 +4,66 @@
 [[https://hub.docker.com/r/marcoieni/doc-org/builds][file:https://img.shields.io/docker/cloud/build/marcoieni/doc-org.svg]]
 
 * Presentation
-Cli command that generates a pdf starting from these files:
+Doc-org generates pdf files by combining [[https://orgmode.org/][org-mode]] and [[https://www.latex-project.org/][latex]].
+
+=Org mode= is a markup language like =markdown=, but more powerful.
+Since it is very concise and readable, it is used to describe the body of your
+document. [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html][Emacs]] is used to export =org mode= to =latex=.
+
+=Latex= is the best way to create awesome pdf files.
+It is used to describe how your document should look like.
+
+Doc-org runs on =docker=, which means you don't need to have =latex= or =emacs=
+installed on your machine and it can be used to generate documents with [[https://github.com/doc-org/examples][CI]].
+
+* Install
+=Docker= is a prerequisite. See official [[https://docs.docker.com/install/][installation instructions]].
+
+#+begin_src sh
+git pull https://github.com/doc-org/doc-org
+#+end_src
+
+In this directory there is the =doc-org= script.
+
+* Update
+Inside the =doc-org= directory run:
+#+begin_src sh
+git pull --rebase
+#+end_src
+
+* Usage
+Run =doc-org -h= to get help and =doc-org -v= to get the software version.
+
+#+begin_src
+$ ./doc-org -h
+doc-org 0.1.0
+Generate pdf by combining org-mode and latex.
+
+USAGE:
+    doc-org [document-dir]
+
+FLAGS:
+    -h       Prints help information
+    -v       Prints version
+
+ARGS:
+    [document-dir]
+#+end_src
+
+** Document directory
+You can specify the directory of your document as the first argument.
+Otherwise, if you run =doc-org= without arguments it will use the current directory,
+
+The directory should contain these files:
 - main.org :: The first org file that will be compiled. In this file you can
-  include other org or latex files. It contains the contents of the document.
+  include other org or latex files.
 - header.tex :: The latex header, that contains document class, packages and so
-  on. It tells how your document should look like (required if ="auto_latex": false=.
+  on (required if ="auto_latex": false=).
 - config.json :: Contains configuration parameters (optional).
-- init.el :: Custom emacs configuration. emacs source this file before converting
+- init.el :: Custom emacs configuration. =Emacs= source this file before converting
   org to latex (optional).
 
-Doc-org runs on docker, which means you don't need to have latex or emacs
-installed on your machine.
-
-Doc-org is for people who already have a latex template and want to use org-mode
-to write the content of their document.
-With doc-org you have full control of the latex output.
-Anyway, if you are already happy with the default latex export function of org
-mode (i.e. you don't want header.tex to be included automatically), you can
-set ="auto_latex": true= in your =config.json= file.
-
-* Features
-Org mode supports latex, so you can use latex inside an org file when needed.
-
-* configuration
-
+* Configuration
 =config.json= file and all of its fields are optional.
 This is an example of this file, where all parameters are present:
 #+begin_src
@@ -38,14 +74,72 @@ This is an example of this file, where all parameters are present:
 }
 #+end_src
 
-- pdf_filename :: name of the output pdf.
-- auto_latex :: org-mode will create necessary latex code automatically.
-  =header.tex= file is not used, doc-org does not modify the output of emacs.
-  False by default.
+- pdf_filename :: name of the output pdf file without extension.
+- auto_latex :: if =true= org-mode creates the necessary latex code
+  automatically. =header.tex= file is not used and doc-org does not modify the
+  output of emacs. =False= by default.
 - shell_escape :: enable latex to run external commands. Useful when working with
-  graphviz for example. False by default since it is dangerous.
+  graphviz for example. False by default.
 
-* org mode to latex: useful links
+* Examples
+See [[https://github.com/doc-org/examples][examples]] git repository. Github actions are used to automatically export to
+latex and pdf after each push to the repository.
+
+* How it works
+=Doc-org= uses =emacs= to convert the =main.org= org-mode file to the =main.tex= latex file.
+You can customize =emacs= export function with the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html][init.el]] file.
+Then, =latexmk= is used to convert =main.tex= and =header.tex= in the final =pdf=.
+
+#+begin_src
++----------+   +---------+
+| main.org |   | init.el |
++-----+----+   +----+----+
+      |             |
+      |             |
+      +------+------+
+             |
+             v
+           emacs
+             |
+             v
+       +-----+----+     +------------+
+       | main.tex |     | header.tex |
+       +-----+----+     +-----+------+
+             |                |
+             |                |
+             +-------+--------+
+                     |
+                     v
+                  latexmk
+                     |
+                     v
+                  +--+--+
+                  | pdf |
+                  +-----+
+#+end_src
+
+The =main.tex= file will look like this:
+#+begin_src latex
+\input{header.tex}
+
+\begin{document}
+% contents of main.org translated into latex
+\end{document}
+#+end_src
+
+* Who is it for
+Doc-org is mainly for people who already have a latex template and want to use
+org-mode to write the body of their document.
+Anyway, if you are already happy with the default latex export function of org
+mode (i.e. you don't want header.tex to be included automatically), you can
+set ="auto_latex": true= in your =config.json= file.
+
+With doc-org you have full control of the latex output, because Org mode
+supports embedded latex code, therefore you can use latex inside an org file
+when needed. Furthermore, =emacs= supports tons of different customization
+options, which can be set with the =init.el= file.
+
+* Org mode to latex: useful links
 - [[https://orgmode.org/manual/Tables-in-LaTeX-export.html#Tables-in-LaTeX-export][tables]]
 - [[https://orgmode.org/manual/Images-in-LaTeX-export.html#Images-in-LaTeX-export][images]]
 - [[https://orgmode.org/manual/Plain-lists-in-LaTeX-export.html#Plain-lists-in-LaTeX-export][lists]]
