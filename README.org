@@ -1,9 +1,9 @@
 #+TITLE: doc-org
 
-[[http://spacemacs.org][file:https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg]]
-
-#+ATTR_HTML: :alt docker build
-[[https://hub.docker.com/r/marcoieni/doc-org/builds][file:https://img.shields.io/docker/cloud/build/marcoieni/doc-org.svg]]
+#+BEGIN_HTML
+<a href="http://spacemacs.org"><img src="https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg" alt="Built with spacemacs" /></a>
+<a href="https://hub.docker.com/r/marcoieni/doc-org/builds"><img src="https://img.shields.io/docker/cloud/build/marcoieni/doc-org.svg" alt="Docker build"></a>
+#+END_HTML
 
 * Presentation
 Doc-org generates pdf files by combining [[https://orgmode.org/][org-mode]] and [[https://www.latex-project.org/][latex]].
