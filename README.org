@@ -16,16 +16,20 @@ document. [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.
 It is used to describe how your document should look like.
 
 Doc-org runs on =docker=, which means you don't need to have =latex= or =emacs=
-installed on your machine and it can be used to generate documents with [[https://github.com/doc-org/examples][CI]].
+installed on your machine and you can use it to generate documents with [[https://github.com/doc-org/examples/actions][Continuous Integration]].
 
 * Install
+** Install docker
 =Docker= is a prerequisite. See official [[https://docs.docker.com/install/][installation instructions]].
 
+** Install doc-org
+In order to download =doc-org= run this command:
 #+begin_src sh
 git pull https://github.com/doc-org/doc-org
 #+end_src
 
-In this directory there is the =doc-org= script.
+In this directory there is the =doc-org= script, which is used to generate
+documents.
 
 * Update
 Inside the =doc-org= directory run:
@@ -60,9 +64,9 @@ The directory should contain these files:
 - main.org :: The first org file that will be compiled. In this file you can
   include other org or latex files.
 - header.tex :: The latex header, that contains document class, packages and so
-  on (required if ="auto_latex": false=).
+  on (required if =auto_latex: false=).
 - config.json :: Contains configuration parameters (optional).
-- init.el :: Custom emacs configuration. =Emacs= source this file before converting
+- init.el :: Custom emacs configuration. =Emacs= sources this file before converting
   org to latex (optional).
 
 * Configuration
@@ -76,11 +80,11 @@ This is an example of this file, where all parameters are present:
 }
 #+end_src
 
-- pdf_filename :: name of the output pdf file without extension.
-- auto_latex :: if =true= org-mode creates the necessary latex code
+- pdf_filename :: Name of the output pdf file without extension.
+- auto_latex :: If =true= org-mode creates the necessary latex code
   automatically. =header.tex= file is not used and doc-org does not modify the
   output of emacs. =False= by default.
-- shell_escape :: enable latex to run external commands. Useful when working with
+- shell_escape :: Enable latex to run external commands. Useful when working with
   graphviz for example. False by default.
 
 * Examples
