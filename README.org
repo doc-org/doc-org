@@ -94,7 +94,7 @@ latex and pdf after each push to the repository.
 * How it works
 =Doc-org= uses =emacs= to convert the =main.org= org-mode file to the =main.tex= latex file.
 You can customize =emacs= export function with the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html][init.el]] file.
-Then, =latexmk= is used to convert =main.tex= and =header.tex= in the final =pdf=.
+Then, =latexmk= is used to convert =main.tex= and =header.tex= to the final =pdf=.
 
 #+begin_src
 +----------+   +---------+
@@ -138,7 +138,7 @@ Doc-org is mainly for people who already have a latex template and want to use
 org-mode to write the body of their document.
 Anyway, if you are already happy with the default latex export function of org
 mode (i.e. you don't want header.tex to be included automatically), you can
-set ="auto_latex": true= in your =config.json= file.
+set =auto_latex: true= in your =config.json= file.
 
 With doc-org you have full control of the latex output, because Org mode
 supports embedded latex code, therefore you can use latex inside an org file
