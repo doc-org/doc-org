@@ -25,7 +25,7 @@ installed on your machine and you can use it to generate documents with [[https:
 ** Install doc-org
 In order to download =doc-org= run this command:
 #+begin_src sh
-git pull https://github.com/doc-org/doc-org
+git clone https://github.com/doc-org/doc-org
 #+end_src
 
 In this directory there is the =doc-org= script, which is used to generate
